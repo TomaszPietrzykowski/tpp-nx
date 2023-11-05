@@ -5,35 +5,31 @@ import { Post } from '@tpp-nx/shared-types';
 export default async function Index() {
   const post: Post = {
     id: 1,
-    title: "Testing lib import",
-    message: "This is meant as a blog content",
+    title: "Przykładowy post",
+    message: "This is meant as a blog content: In May and June 2020, the death of 350 elephants in Botswana’s Okavango delta baffled conservationists and sparked global speculation about what had caused it. Elephants of all ages and both sexes were affected, with many walking in circles before dying suddenly, collapsing on their faces. Two months later, 35 more elephants died in north-western Zimbabwe.The bacterial infection has not previously been linked to elephant deaths, according to the paper published in the Nature Communications journal. Researchers believe it could have been the same one responsible for the deaths in neighbouring countries. This represents an important conservation concern for elephants in the largest remaining meta-population of this endangered species,” researchers wrote in the paper. It was written by an international team of researchers from the Victoria Falls Wildlife Trust, the University of Surrey, laboratories in South Africa and the UK government’s Animal and Plant Health Agency (APHA).",
     author: "Majk"
   }
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.scss file.
-   */
+
   return (
     <div className={styles.page}>
       <div className="wrapper">
-        <div className="container">
+        <div className="container" style={{paddingTop: '4rem'}}>
           <div id="welcome">
-            <h1>
-              <span> Hello there, </span>
-              Welcome tpp-frontend 👋
-            </h1>
+            <h1>Transkulturowa <br /> Psychoterapia <br /> Pozytywna</h1>
           </div>
 
           <div id="hero" className="rounded">
             <div className="text-container">
               <h2>
-                <span>You&apos;re up and running</span>
+                <span>Strona w budowie</span>
               </h2>
-              <a href="#commands"> What&apos;s next? </a>
+              <div className="links" style={{display: 'flex', gap: '1rem'}}>
+                <div><a href="/admin">Admin</a></div>
+                <div><a href="/contact">Contact</a></div>
+              </div>
             </div>
           </div>
-
+    <br />
           <div className="rounded shadow" style={{padding: "2rem"}}>
             <h3>{post.title}</h3>
             <p>{post.message}</p>
