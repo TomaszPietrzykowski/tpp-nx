@@ -20,8 +20,12 @@ app.get('*', (req, res) =>
   res.sendFile(path.resolve('apps', 'tpp-api', 'src', 'view', 'index.html'))
 );
 
+// TODO: color logging library:
+// https://blog.logrocket.com/using-console-colors-node-js/
+// https://en.m.wikipedia.org/wiki/ANSI_escape_code#Colors
+
 app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
+  console.log(`\x1b[33m Server listening: http://${host}:${port} \x1b[0m`);
 });
 
 // const express = require("express")

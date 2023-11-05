@@ -11,7 +11,7 @@ const connectDB = async () => {
       )
     );
     console.log(
-      `MongoDB connected\nDB name: ${conn.connection.name}\nDB host: ${conn.connection.host}`
+      `\x1b[92mMongoDB connected\nDB name: ${conn.connection.name}\nDB host: ${conn.connection.host} \x1b[0m`
     );
     // console.log(conn)
   } catch (err) {
