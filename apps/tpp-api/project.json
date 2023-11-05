@@ -13,7 +13,7 @@
         "outputPath": "dist/apps/tpp-api",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/tpp-api/src/main.ts",
+        "main": "apps/tpp-api/src/app.ts",
         "tsConfig": "apps/tpp-api/tsconfig.app.json",
         "assets": ["apps/tpp-api/src/assets"],
         "generatePackageJson": true,
