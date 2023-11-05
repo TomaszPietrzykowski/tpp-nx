@@ -25,7 +25,7 @@ app.get('*', (req, res) =>
 // https://en.m.wikipedia.org/wiki/ANSI_escape_code#Colors
 
 app.listen(port, host, () => {
-  console.log(`\x1b[33m Server listening: http://${host}:${port} \x1b[0m`);
+  console.log(`\x1b[33m***   Server listening: http://${host}:${port} \x1b[0m`);
 });
 
 // const express = require("express")

@@ -11,7 +11,7 @@ const connectDB = async () => {
       )
     );
     console.log(
-      `\x1b[92mMongoDB connected\nDB name: ${conn.connection.name}\nDB host: ${conn.connection.host} \x1b[0m`
+      `\x1b[92m***   MongoDB connected\n\x1b[96m***   DB name: ${conn.connection.name}\n***   DB host: ${conn.connection.host} \x1b[0m\n\x1b[95m***   ----------------\n***   Happy hacking!!!`
     );
     // console.log(conn)
   } catch (err) {
