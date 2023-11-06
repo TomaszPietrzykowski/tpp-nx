@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose, { ValidatorProps } from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema(
   {
@@ -12,11 +13,11 @@ const userSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       validate: {
-        validator: function (v) {
+        validator: function (v: string): boolean {
           return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(v);
         },
-        message: (props) =>
-          `The email '${props.value}' in the field '${props.path}' is not valid!`,
+        message: (props: ValidatorProps) =>
+          `Adres email '${props.value}' jest niepoprawny.`,
       },
     },
     avatar: {
@@ -36,15 +37,28 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Podaj hasło'],
       minlength: 8,
+      select: false,
     },
     passwordConfirm: {
       type: String,
       required: [true, 'Potwierdź hasło'],
       minlength: 8,
+      validator: function (current: string): boolean {
+        return current === this.password;
+      },
     },
   },
   { versionKey: false, timestamps: true }
 );
+
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+
+  this.password = await bcrypt.hash(this.password, 10);
+
+  this.passwordConfirm = undefined;
+  next();
+});
 
 const User = mongoose.model('User', userSchema);
 

@@ -1,9 +1,10 @@
 import express from 'express';
-import { register } from '../controller/authController';
+import { register, login } from '../controller/authController';
 
 const userRouter = express.Router();
 
 userRouter.post('/register', register);
+userRouter.post('/login', login);
 
 //   .post(userController.registerUser)
 //   .get(authMiddleware.protect, authMiddleware.admin, userController.getUsers);
