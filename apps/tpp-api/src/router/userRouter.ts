@@ -1,12 +1,10 @@
-// const express = require("express");
-// const router = express.Router();
-// const authMiddleware = require("../middleware/authMiddleware");
-// const userController = require("../controller/userController");
 import express from 'express';
-import { getUsers } from '../controller/userController';
+import { register } from '../controller/authController';
+
 const userRouter = express.Router();
 
-userRouter.route('/').get(getUsers);
+userRouter.post('/register', register);
+
 //   .post(userController.registerUser)
 //   .get(authMiddleware.protect, authMiddleware.admin, userController.getUsers);
 
