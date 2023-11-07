@@ -1,4 +1,6 @@
-export default (req, res, next) => {
+import { Request, Response, NextFunction } from 'express';
+
+export default (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Expose-Headers', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Max-Age', '3600');
