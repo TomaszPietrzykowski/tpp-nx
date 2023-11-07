@@ -24,8 +24,6 @@ export const register = catchAsync(async (req, res) => {
   });
 });
 
-// TODO fix types: https://mongoosejs.com/docs/typescript/statics-and-methods.html
-
 export const login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -33,10 +31,11 @@ export const login = catchAsync(async (req, res, next) => {
     return next(new AppError('Podaj email i hasło', 400));
   }
 
-  // const user = await User.findOne({ email }).select('+password');
-  // if (!user || !(bcrypt)) {
-  //   return next(new AppError("Niepoprawny login lub hasło", 401))
-  // }
+  const user = await User.findOne({ email }).select('+password');
+
+  if (!(await user.matchPassword(password, user.password))) {
+    return next(new AppError('Niepoprawny login lub hasło', 401));
+  }
 
   const token = '';
 

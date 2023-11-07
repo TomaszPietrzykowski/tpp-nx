@@ -1,7 +1,25 @@
-import mongoose, { ValidatorProps } from 'mongoose';
+import { ValidatorProps, Schema, Model, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
-const userSchema = new mongoose.Schema(
+interface IUser {
+  name: string;
+  email: string;
+  avatar?: string;
+  isAdmin: boolean;
+  isAuthor: boolean;
+  password: string;
+  passwordConfirm: string;
+}
+interface IUserMethods {
+  matchPassword(
+    enteredPassword: string,
+    savedPassword: string
+  ): Promise<boolean>;
+}
+
+type UserModel = Model<IUser, object, IUserMethods>;
+
+const userSchema = new Schema<IUser, UserModel, IUserMethods>(
   {
     name: {
       type: String,
@@ -51,6 +69,13 @@ const userSchema = new mongoose.Schema(
   { versionKey: false, timestamps: true }
 );
 
+userSchema.method(
+  'matchPassword',
+  async function (enteredPassword: string, savedPassword: string) {
+    return await bcrypt.compare(enteredPassword, savedPassword);
+  }
+);
+
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
 
@@ -60,10 +85,6 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
-
-const User = mongoose.model('User', userSchema);
+const User = model<IUser, UserModel>('User', userSchema);
 
 export default User;
