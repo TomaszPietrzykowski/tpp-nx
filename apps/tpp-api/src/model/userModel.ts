@@ -9,12 +9,14 @@ interface IUser {
   isAuthor: boolean;
   password: string;
   passwordConfirm: string;
+  passwordChangedAt?: Date;
 }
 interface IUserMethods {
   matchPassword(
     enteredPassword: string,
     savedPassword: string
   ): Promise<boolean>;
+  changedPasswordAfter(JWTTimestamp: Date): boolean;
 }
 
 type UserModel = Model<IUser, object, IUserMethods>;
@@ -65,6 +67,9 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>(
         return current === this.password;
       },
     },
+    passwordChangedAt: {
+      type: Date,
+    },
   },
   { versionKey: false, timestamps: true }
 );
@@ -75,6 +80,18 @@ userSchema.method(
     return await bcrypt.compare(enteredPassword, savedPassword);
   }
 );
+
+userSchema.method('changedPasswordAfter', function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      (this.passwordChangedAt.getTime() / 1000).toString(),
+      10
+    );
+    return JWTTimestamp < changedTimestamp;
+  }
+
+  return false;
+});
 
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
