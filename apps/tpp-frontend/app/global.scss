@@ -51,10 +51,11 @@ pre {
   padding: 0.8rem 4rem;
   width: 100%;
   background: linear-gradient(
-    90deg,
-    rgba(236, 240, 243, 0.87),
-    rgba(244, 251, 251, 0.87)
-  );
+      90deg,
+      rgba(236, 240, 243, 0.7),
+      rgba(244, 251, 251, 0.7)
+    ),
+    linear-gradient(180deg, rgba(244, 251, 251, 1), rgba(244, 251, 251, 0));
 }
 .layout__header-logo {
   h1 {
