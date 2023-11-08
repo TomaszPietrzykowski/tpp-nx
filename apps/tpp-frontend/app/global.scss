@@ -40,3 +40,37 @@ pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     Liberation Mono, Courier New, monospace;
 }
+.layout__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 4rem;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(236, 240, 243, 0.87),
+    rgba(244, 251, 251, 0.87)
+  );
+}
+.layout__header-logo {
+  h1 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+  }
+}
+.layout__header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+
+  li {
+    margin-inline: 1rem;
+    font-size: 1.2rem;
+    font-weight: 5 00;
+  }
+}

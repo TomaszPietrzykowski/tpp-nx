@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './blog.module.scss';
+import styles from './consultations.module.scss';
 
-const BlogPage = () => {
+const ConsultationsPage = () => {
   return (
-    <div className={styles.blog__container}>
-      <h1>Blog</h1>
+    <div className={styles.consultations__container}>
+      <h1>Konsultacje</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente
         eligendi amet, expedita repudiandae quasi ad! Voluptas ratione totam
@@ -18,4 +18,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default ConsultationsPage;
