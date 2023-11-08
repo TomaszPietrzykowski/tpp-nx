@@ -1,20 +1,20 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import AppError from '../utils/appError';
 
 const handleCastErrorDB = (err) => {
-  const message = `Invalid ${err.path}: ${err.value}`;
+  const message = `Błąd rzutowania bazy ${err.path}: ${err.value}`;
   return new AppError(message, 400);
 };
 
 const handleDuplicateFieldsDB = (err) => {
   const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
-  const message = `Duplicate value: ${value}. Please use another value`;
+  const message = `Zduplikowane pole: ${value}. Użyj innej wartości`;
   return new AppError(message, 400);
 };
 
 const handleValidationErrorDB = (err: { errors: Array<Error> }) => {
   const errors = Object.values(err.errors).map((el) => el.message);
-  const message = `Invalid input data: ${errors.join('. ')}`;
+  const message = `Niepoprawne dane: ${errors.join('. ')}`;
   return new AppError(message, 400);
 };
 
@@ -34,7 +34,6 @@ const sendErrorDev = (err, res) => {
 };
 
 const sendErrorProduction = (err, res) => {
-  // operational error send to client otherwise send generic error
   if (err.isOperational) {
     res.status(err.statusCode).json({
       status: err.status,
@@ -49,7 +48,8 @@ const sendErrorProduction = (err, res) => {
   }
 };
 
-export default (err, req: Request, res: Response) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default (err, req: Request, res: Response, next: NextFunction) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
   if (process.env.NODE_ENV === 'development') {
