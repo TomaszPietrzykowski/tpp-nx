@@ -13,6 +13,7 @@ const handleDuplicateFieldsDB = (err) => {
 };
 
 const handleValidationErrorDB = (err: { errors: Array<Error> }) => {
+  console.log('Walidacja !');
   const errors = Object.values(err.errors).map((el) => el.message);
   const message = `Niepoprawne dane: ${errors.join('. ')}`;
   return new AppError(message, 400);
@@ -34,7 +35,8 @@ const sendErrorDev = (err, res) => {
 };
 
 const sendErrorProduction = (err, res) => {
-  if (err.isOperational) {
+  console.log('Send error prod called: ', err);
+  if (err.isOperational || err.errors) {
     res.status(err.statusCode).json({
       status: err.status,
       message: err.message,
