@@ -1,8 +1,12 @@
 export * from './lib/shared-types';
 
-export interface Post {
-  id: number;
+export interface IPost {
+  _id: string;
   title: string;
-  message: string;
+  content: string;
+  snippet: string;
   author: string;
+  slug: string;
+  image?: string;
+  createdAt: Date;
 }
