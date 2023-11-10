@@ -1,6 +1,6 @@
 import React from 'react';
 import { IPost } from '@tpp-nx/shared-types';
-import styles from '../../app/home.module.scss';
+import styles from '../../_styles/home.module.scss';
 import PostsGrid from '../blog/PostsGrid';
 
 const FeaturedPosts = async ({ posts }: { posts: Array<IPost> }) => {

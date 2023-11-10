@@ -4,8 +4,8 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 import { IPost } from '@tpp-nx/shared-types';
-import styles from '../../app/blog/blog.module.scss';
-import dummyImage from '../../public/images/blog/uk.jpg';
+import styles from '../../_styles/blog.module.scss';
+import dummyImage from '../../../public/images/blog/uk.jpg';
 
 interface IProps {
   post: IPost;

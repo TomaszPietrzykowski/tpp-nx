@@ -1,29 +1,9 @@
-import Link from 'next/link';
 import React, { Fragment } from 'react';
-import styles from './user.module.scss';
+import styles from '../../_styles/user.module.scss';
 
 const UserDashboard = () => {
   return (
     <Fragment>
-      <div className={styles.dashboard__container}>
-        <nav>
-          <ul className={styles.dashboard__nav}>
-            <Link href="/user/admin">
-              <li>STREFA AUTORA</li>
-            </Link>
-            <Link href="/">
-              <li>WYLOGUJ</li>
-            </Link>
-            tymczasowe:
-            <Link href="/user/login">
-              <li>ZALOGUJ</li>
-            </Link>
-            <Link href="/user/register">
-              <li>UTWORZ KONTO</li>
-            </Link>
-          </ul>
-        </nav>
-      </div>
       <div className={styles.user__profile}>
         <h1>Moje konto</h1>
         <div className={styles.admin__card}>

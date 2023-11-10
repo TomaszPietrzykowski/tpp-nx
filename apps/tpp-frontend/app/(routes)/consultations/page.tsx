@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './consultations.module.scss';
+import styles from '../../_styles/consultations.module.scss';
 
 const ConsultationsPage = () => {
   return (

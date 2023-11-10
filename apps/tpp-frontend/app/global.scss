@@ -52,10 +52,11 @@ pre {
   width: 100%;
   background: linear-gradient(
       90deg,
-      rgba(236, 240, 243, 0.7),
-      rgba(244, 251, 251, 0.7)
+      rgba(236, 240, 243, 0.4),
+      rgba(244, 251, 251, 0.4)
     ),
-    linear-gradient(180deg, rgba(244, 251, 251, 1), rgba(244, 251, 251, 0));
+    linear-gradient(180deg, rgba(244, 251, 251, 0.5), rgba(244, 251, 251, 0));
+  backdrop-filter: blur(8px);
 }
 .layout__header-logo {
   h1 {

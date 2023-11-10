@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../user.module.scss';
+import styles from '../../_styles/user.module.scss';
 
 const RegisterPage = () => {
   return (

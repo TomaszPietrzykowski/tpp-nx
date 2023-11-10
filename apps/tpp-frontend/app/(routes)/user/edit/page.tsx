@@ -1,13 +1,13 @@
 'use client';
 import Link from 'next/link';
 import React from 'react';
-import styles from '../user.module.scss';
-import { useRouter } from 'next/navigation';
+import styles from '../../../_styles/user.module.scss';
+// import { useRouter } from 'next/navigation';
 
 const AdminPage = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
-  router.replace('/user/login');
+  // if (!user.isAuthenticated or sth) router.replace('/login');
 
   return (
     <div className={styles.admin__container}>

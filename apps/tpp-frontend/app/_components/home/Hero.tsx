@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import background from '../../public/images/site/backgroud.jpg';
-import styles from '../../app/home.module.scss';
+import background from '../../../public/images/site/backgroud.jpg';
+import styles from '../../../app/_styles/home.module.scss';
 
 const Hero = () => {
   return (

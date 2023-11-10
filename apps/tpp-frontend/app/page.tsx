@@ -1,6 +1,6 @@
 // import FeaturedPosts from '../components/home/FeaturedPosts';
-import Hero from '../components/home/Hero';
-import styles from './home.module.scss';
+import Hero from './_components/home/Hero';
+import styles from './_styles/home.module.scss';
 
 export default async function Index() {
   return (

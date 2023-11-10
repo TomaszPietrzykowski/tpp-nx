@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './blog.module.scss';
-import FeaturedPosts from '../../components/home/FeaturedPosts';
+import styles from '../../_styles/blog.module.scss';
+import FeaturedPosts from '../../_components/home/FeaturedPosts';
 
 async function getPosts() {
   const res = await fetch('http://localhost:3000/api/users');

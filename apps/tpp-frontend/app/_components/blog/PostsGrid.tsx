@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../app/blog/blog.module.scss';
+import styles from '../../_styles/blog.module.scss';
 import PostCard from './PostCard';
 import { IPost } from '@tpp-nx/shared-types';
 

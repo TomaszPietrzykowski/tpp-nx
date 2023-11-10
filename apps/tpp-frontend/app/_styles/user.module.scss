@@ -8,6 +8,9 @@
 
 .dashboard__nav {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 4rem;
 
   li {
     padding: 1rem 2rem;
@@ -48,4 +51,24 @@
     font-size: 1.6rem;
     margin-bottom: 1rem;
   }
+}
+
+.user_layout__container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 300px 1fr;
+  min-height: 100vh;
+  padding-top: 86px; // <-- main nav padding
+
+  & > * {
+    border: 1px solid lightgray;
+  }
+}
+.user_layout__sidenav ul {
+  position: fixed;
+  top: 86px;
+  left: 0;
+}
+.user_layout__content {
+  padding-top: 4rem;
 }
