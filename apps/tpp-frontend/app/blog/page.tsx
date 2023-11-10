@@ -1,19 +1,31 @@
 import React from 'react';
 import styles from './blog.module.scss';
+import FeaturedPosts from '../../components/home/FeaturedPosts';
 
-const BlogPage = () => {
+async function getPosts() {
+  const res = await fetch('http://localhost:3000/api/users');
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+const BlogPage = async () => {
+  const posts = await getPosts();
+
   return (
-    <div className={styles.blog__container}>
-      <h1>Blog</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente
-        eligendi amet, expedita repudiandae quasi ad! Voluptas ratione totam
-        laborum ipsa accusantium architecto ipsam delectus, temporibus, repellat
-        quod vitae nobis perspiciatis ad? Doloribus voluptatum doloremque soluta
-        architecto accusantium, tempore eum illo alias temporibus officia ex
-        magnam natus tempora asperiores quisquam quam, necessitatibus quos
-        placeat quas reprehenderit repellat laudantium esse. Cumque, veniam.
-      </p>
+    <div className="">
+      {posts?.length > 0 ? (
+        <div className={styles.blog__container}>
+          <FeaturedPosts posts={posts} />
+        </div>
+      ) : (
+        <h1>Loading</h1>
+      )}
     </div>
   );
 };
